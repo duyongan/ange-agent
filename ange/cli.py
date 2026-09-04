@@ -47,6 +47,8 @@ def _cmd(argv: str) -> tuple[str, str]:
 def main() -> None:
     settings: Settings = load_settings()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(message)s")
+    for noisy in ("httpx", "httpx2", "openai", "openai._base_client"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)  # 每条 HTTP 请求的 INFO 噪音,关掉
 
     console.print(Panel(f"ange-agent v{__version__} · 模型 {settings.model} · 数据 {settings.home}", title="ange"))
 
