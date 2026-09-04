@@ -1,0 +1,32 @@
+[project]
+name = "ange-agent"
+version = "0.1.0"
+description = "自进化 CLI agent:运行时自演进 × skill 代谢环 × 自建 wiki 知识引擎"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "deepagents>=0.7.13",
+    "httpx>=0.28.1",
+    "langchain>=1.4.0",
+    "langchain-openai>=1.6.0",
+    "langgraph>=1.2.11",
+    "langgraph-checkpoint-sqlite>=3.1.1",
+    "prompt-toolkit>=3.0.53",
+    "pydantic>=2.13.5",
+    "pymupdf>=1.28.2",
+    "rich>=15.0.0",
+]
+
+[project.scripts]
+ange = "ange.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.8,<1"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
+
+[tool.uv.build-backend]
+module-name = "ange"
+module-root = ""
